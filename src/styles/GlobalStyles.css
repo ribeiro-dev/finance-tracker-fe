@@ -1,0 +1,17 @@
+:root {
+  --background: #fafafa;
+  --foreground: #21242c;
+
+  --card: #ffffff;
+  --card-foreground: #21242c;
+
+  --primary: #2eb8aa;
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: #f0f2f4;
+  --secondary-foreground: #21242c;
+}
+
+body {
+  background: var(--background);
+}
+
