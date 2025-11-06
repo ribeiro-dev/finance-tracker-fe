@@ -5,6 +5,7 @@ import './index.css'
 import './styles/GlobalStyles.css'
 
 import { Login } from "./pages/Login";
+import Categories from "./pages/Categories";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/categories" element={<Categories />} />
         </Routes>
       </Router>
     </>

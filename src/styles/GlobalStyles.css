@@ -6,12 +6,37 @@
   --card-foreground: #21242c;
 
   --primary: #2eb8aa;
-  --primary-foreground: rgb(255, 255, 255);
+  --primary-foreground: #ffffff;
   --secondary: #f0f2f4;
   --secondary-foreground: #21242c;
+
+  --success: #22c35d;
+  --success-foreground: #ffffff;
+
+  --border: #e2e4e9;
+  --input: #e2e4e9;
+  --ring: #2eb8aa;
+
+  --radius: 0.75rem;
+
+  --sidebar-background: #fafafa;
+  --sidebar-foreground: #3f3f46;
+  --sidebar-primary: #18181b;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #3b82f6;
+
+  --chart-income: #22c35d;
+  --chart-expense: #dd3c3c;
+  --chart-1: #2eb8aa;
+  --chart-2: #22c35d;
+  --chart-3: #3399cc;
+  --chart-4: #5e47d1;
+  --chart-5: #cc33cc;
 }
 
-body {
-  background: var(--background);
+button:hover {
+  cursor: pointer;
 }
-
