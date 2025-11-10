@@ -22,10 +22,19 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    const errorCode = error.response.data.error.code
+
     if (error.response?.status === 401) {
       localStorage.removeItem('accessToken');
       window.location.href = '/login';
     }
+
+    if (errorCode == 'E_INVALID_TOKEN') {
+      console.error('Invalid access token')
+      localStorage.removeItem('accessToken');
+      window.location.href = '/login';
+    }
+
     return Promise.reject(error);
   }
 );
