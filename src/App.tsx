@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { useState } from 'react'
 
 import './index.css'
 import './styles/GlobalStyles.css'
 
-import { Login } from "./pages/Login";
+import Login from "./pages/Login";
 import Categories from "./pages/Categories";
+import { Toaster } from "sonner";
 
 function App() {
 
@@ -17,6 +17,8 @@ function App() {
           <Route path="/categories" element={<Categories />} />
         </Routes>
       </Router>
+
+      <Toaster richColors/>
     </>
   )
 }
