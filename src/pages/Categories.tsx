@@ -1,22 +1,67 @@
+import { useState } from "react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
+import { toast } from "sonner";
+
+import type { Category } from "@/interfaces/category";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Pencil, Plus, Trash2 } from "lucide-react";
-import { useState } from "react";
 import { Badge } from '@/components/ui/badge';
-
-import type { Category } from "@/interfaces/category.interface";
 import { Layout } from "@/components/Layout";
+import { CategoryForm } from "@/components/CategoryForm";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { categoriesApi } from "@/services/categories";
+
 
 const Categories = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const categories: Category[] = [
-    { id: 1, name: 'Entretenimento' },
-    { id: 2, name: 'Food' },
-  ]
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
+  const queryClient = useQueryClient();
+  const { data: categories = [] } = useQuery({
+    queryKey: ['categories'],
+    queryFn: categoriesApi.getAll,
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: categoriesApi.delete,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['categories'] });
+      toast.success('Categoria deletada com sucesso');
+    },
+    onError: () => {
+      toast.error('Falha ao deletar categoria');
+    },
+  });
+
+  const handleEdit = (category: Category) => {
+    setEditingCategory(category);
+    setIsOpen(true);
+  };
+
+  const handleDelete = async (id: string) => {
+    toast.warning('Tem certeza que deseja deletar a categoria?', {
+      action: {
+        label: 'Confirmar',
+        onClick: () => deleteMutation.mutate(id),
+      },
+      classNames: {
+        actionButton: '!bg-[#dc7609]' // button was black
+      },
+    })
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setEditingCategory(null);
+  };
 
   return (
     <Layout>
@@ -28,11 +73,19 @@ const Categories = () => {
           </div>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-              <Button>
+              <Button onClick={() => setEditingCategory(null)}>
                 <Plus className="mr-2 h-4 w-4" />
                 Criar Categoria
               </Button>
             </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <DialogHeader>
+                <DialogTitle>
+                  {editingCategory ? "Editar Categoria" : "Nova Categoria"}
+                </DialogTitle>
+              </DialogHeader>
+              <CategoryForm category={editingCategory} onSuccess={handleClose} />
+            </DialogContent>
           </Dialog>
         </div>
 
@@ -53,13 +106,26 @@ const Categories = () => {
             ) : (
               <div className="space-y-3">
                 {categories.map((category) => (
-                  <div key={category.id} className="flex items-center justify-between rounded-lg border border-border p-3">
+                  <div
+                    key={category.id}
+                    className="flex items-center justify-between rounded-lg border border-border p-3"
+                  >
                     <span className="font-medium">{category.name}</span>
                     <div className="flex gap-2">
-                      <Button variant="ghost" size="icon">
+                      <Button
+                        title="Editar"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleEdit(category)}
+                      >
                         <Pencil className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button
+                        title="Deletar"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleDelete(category.id)}
+                      >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
