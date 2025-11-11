@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Layout } from '@/components/Layout';
+import { TransactionForm } from '@/components/TransactionForm';
 
 import { transactionsApi } from '@/services/transactions';
 import type { Transaction } from '@/interfaces/transaction';
@@ -52,13 +53,18 @@ const Transactions = () => {
     })
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setEditingTransaction(null);
+  };
+
   return (
     <Layout>
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Transações</h1>
-            <p className="text-muted-foreground">Gerencie sua renda e seus gastos</p>
+            <p className="text-muted-foreground">Gerencie suas rendas e despesas</p>
           </div>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
@@ -67,12 +73,16 @@ const Transactions = () => {
                 Criar Transação
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-md" aria-description='Formulário de Criação/Edição de Transação'>
               <DialogHeader>
                 <DialogTitle>
                   {editingTransaction ? 'Editar Transação' : 'Nova Transação'}
                 </DialogTitle>
               </DialogHeader>
+              <TransactionForm
+                transaction={editingTransaction}
+                onSuccess={handleClose}
+              />
             </DialogContent>
           </Dialog>
         </div>
