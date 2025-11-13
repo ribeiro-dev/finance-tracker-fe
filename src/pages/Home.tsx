@@ -59,11 +59,11 @@ const Home = () => {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-0">
-              <CardTitle className="text-md font-medium">Balance</CardTitle>
+              <CardTitle className="text-md font-medium">Saldo</CardTitle>
               <Wallet className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className={`text-2xl font-bold ${(summary?.balance ?? 0) > 0 ? 'text-success' : 'text-destructive'}`}>
                 {summary?.balance.toFixed(2) || '0.00'}
               </div>
             </CardContent>
