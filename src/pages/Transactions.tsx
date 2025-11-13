@@ -122,7 +122,7 @@ const Transactions = () => {
                           transaction.type === 'INCOME' ? 'text-success' : 'text-destructive'
                         }`}
                       >
-                        {transaction.type === 'INCOME' ? '+' : '-'}R${transaction.amount.toFixed(2)}
+                        R${transaction.amount.toFixed(2)}
                       </div>
                       <div className="flex gap-2">
                         <Button
