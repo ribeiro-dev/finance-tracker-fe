@@ -38,7 +38,7 @@ const Login = () => {
     try {
       await login(data.email, data.password);
       toast.success('Bem vindo de volta!');
-      navigate('/categories');
+      navigate('/');
 
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Falha no login. Tente novamente.');
