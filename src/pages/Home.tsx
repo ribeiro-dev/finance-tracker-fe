@@ -92,7 +92,7 @@ const Home = () => {
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <span>{transaction.category.name}</span>
                         <span>•</span>
-                        <span>{format(new Date(transaction.date), 'MMM d, yyyy')}</span>
+                        <span>{format(new Date(transaction.date), 'dd-MM-yyyy')}</span>
                       </div>
                     </div>
                     <div
