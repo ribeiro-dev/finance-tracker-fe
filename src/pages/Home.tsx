@@ -29,7 +29,7 @@ const Home = () => {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Painel</h1>
-          <p className="text-muted-foreground">Bem vindo de volta! Aqui esta sua visão geral financeira.</p>
+          <p className="text-muted-foreground">Bem vindo de volta! Aqui está sua visão geral financeira.</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
