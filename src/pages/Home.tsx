@@ -29,7 +29,7 @@ const Home = () => {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Painel</h1>
-          <p className="text-muted-foreground">Bem vindo de volta! Aqui esta sua visão geral financeira.</p>
+          <p className="text-muted-foreground">Bem vindo de volta! Aqui está sua visão geral financeira.</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
@@ -40,7 +40,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-success">
-                {summary?.income.toFixed(2) || '0.00'}
+                R${summary?.income.toFixed(2) || '0.00'}
               </div>
             </CardContent>
           </Card>
@@ -52,7 +52,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-destructive">
-                {summary?.expenses.toFixed(2) || '0.00'}
+                R${summary?.expenses.toFixed(2) || '0.00'}
               </div>
             </CardContent>
           </Card>
@@ -64,7 +64,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <div className={`text-2xl font-bold ${(summary?.balance ?? 0) > 0 ? 'text-success' : 'text-destructive'}`}>
-                {summary?.balance.toFixed(2) || '0.00'}
+                R${summary?.balance.toFixed(2) || '0.00'}
               </div>
             </CardContent>
           </Card>
@@ -92,7 +92,7 @@ const Home = () => {
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <span>{transaction.category.name}</span>
                         <span>•</span>
-                        <span>{format(new Date(transaction.date), 'MMM d, yyyy')}</span>
+                        <span>{format(new Date(transaction.date), 'dd-MM-yyyy')}</span>
                       </div>
                     </div>
                     <div
