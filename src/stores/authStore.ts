@@ -29,6 +29,13 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
+  register: async (email: string, password: string, name?: string) => {
+    const response = await api.post('/auth/register', { email, password, name });
+    const { accessToken } = response.data.token;
+    localStorage.setItem('accessToken', accessToken);
+    set({ accessToken });
+  },
+
   logout: () => {
     localStorage.removeItem('accessToken');
     set({ accessToken: null });
