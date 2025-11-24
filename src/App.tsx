@@ -6,6 +6,9 @@ import "./styles/GlobalStyles.css";
 
 import Login from "./pages/Login";
 import Categories from "./pages/Categories";
+import Transactions from "./pages/Transactions";
+import Home from "./pages/Home";
+
 import { Toaster } from "sonner";
 
 const queryClient = new QueryClient();
@@ -16,9 +19,10 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/categories" element={<Categories />} />
+            <Route path="/transactions" element={<Transactions />} />
           </Routes>
         </Router>
       </QueryClientProvider>
