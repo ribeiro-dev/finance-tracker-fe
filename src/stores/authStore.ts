@@ -6,6 +6,7 @@ interface AuthState {
   accessToken: string | null;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, name?: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -27,6 +28,13 @@ export const useAuthStore = create<AuthState>((set) => ({
       console.error('[Auth] Failed to fetch user:', error);
       set({ isLoading: false });
     }
+  },
+
+  register: async (email: string, password: string, name?: string) => {
+    const response = await api.post('/auth/register', { email, password, name });
+    const { accessToken } = response.data.token;
+    localStorage.setItem('accessToken', accessToken);
+    set({ accessToken });
   },
 
   logout: () => {
