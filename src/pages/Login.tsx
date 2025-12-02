@@ -100,7 +100,7 @@ const Login = () => {
               {isLoading ? 'Logando...' : 'Login'}
             </Button>
             <CardDescription>
-                Nao tem conta? <Link to="#">Crie aqui</Link>
+                Nao tem conta? <Link to="/signup">Crie aqui</Link>
             </CardDescription>
           </CardFooter>
 

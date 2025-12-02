@@ -5,6 +5,7 @@ import "./index.css";
 import "./styles/GlobalStyles.css";
 
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Categories from "./pages/Categories";
 import Transactions from "./pages/Transactions";
 import Home from "./pages/Home";
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/transactions" element={<Transactions />} />
           </Routes>
