@@ -92,7 +92,7 @@ const Transactions = () => {
             {transactions.length === 0 ? (
               <div className="py-12 text-center">
                 <p className="text-muted-foreground mb-4">
-                  Sem transactions ainda. Crie a primeira e vamos começar!
+                  Sem transações ainda. Crie a primeira e vamos começar!
                 </p>
                 <Button onClick={() => setIsOpen(true)}>
                   <Plus className="mr-2 h-4 w-4" />
