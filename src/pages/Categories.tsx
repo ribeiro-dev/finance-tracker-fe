@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import type { Category } from "@/interfaces/category";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Badge } from '@/components/ui/badge';
+
 import { Layout } from "@/components/Layout";
 import { CategoryForm } from "@/components/CategoryForm";
 
@@ -89,22 +89,20 @@ const Categories = () => {
           </Dialog>
         </div>
 
-        <Card className="w-3xl max-w-fi m-auto">
-          <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2">
-              Categorias
-              <Badge variant="outline" className="bg-success/10 text-success">
-                {categories.length}
-              </Badge>
-            </CardTitle>
-          </CardHeader>
+        <Card>
           <CardContent>
             {categories.length === 0 ? (
-              <p className="text-center text-muted-foreground py-8">
-                Sem categorias registradas
-              </p>
+              <div className="py-12 text-center">
+                <p className="text-muted-foreground mb-4">
+                  Sem categorias registradas
+                </p>
+                <Button onClick={() => setIsOpen(true)}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Crie Sua Primeira Categoria
+                </Button>
+              </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {categories.map((category) => (
                   <div
                     key={category.id}
