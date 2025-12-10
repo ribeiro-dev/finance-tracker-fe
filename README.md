@@ -16,18 +16,18 @@ Essa aplicação consome a **[Finance Tracker API](https://github.com/ribeiro-de
 Criado para demonstrar práticas modernas de front-end, integração de API no mundo real, arquitetura de componentes limpa e uma experiência de usuário fluida.
 
 <p>
-  <img src="screenshots/login.png" alt="Página de Login" width="45%" style="max-width:600px; margin:8px;" />
-  <img src="screenshots/painel.png" alt="Página Inicial" width="45%" style="max-width:600px; margin:8px;" />
+  <img src="screenshots/login.png" alt="Página de Login" width="45%" style="max-width:800px; margin:8px;" />
+  <img src="screenshots/painel.png" alt="Página Inicial" width="45%" style="max-width:800px; margin:8px;" />
 </p>
 
 <p>
-  <img src="screenshots/categorias-1.png" alt="Página de Categorias 1" width="45%" style="max-width:600px; margin:8px;" />
-  <img src="screenshots/categorias-2.png" alt="Página de Categorias 2" width="45%" style="max-width:600px; margin:8px;" />
+  <img src="screenshots/categorias-1.png" alt="Página de Categorias 1" width="45%" style="max-width:800px; margin:8px;" />
+  <img src="screenshots/categorias-2.png" alt="Página de Categorias 2" width="45%" style="max-width:800px; margin:8px;" />
 </p>
 
 <p>
-  <img src="screenshots/transacoes-1.png" alt="Página de Transações 1" width="45%" style="max-width:600px; margin:8px;" />
-  <img src="screenshots/transacoes-2.png" alt="Página de Transações 2" width="45%" style="max-width:600px; margin:8px;" />
+  <img src="screenshots/transacoes-1.png" alt="Página de Transações 1" width="45%" style="max-width:800px; margin:8px;" />
+  <img src="screenshots/transacoes-2.png" alt="Página de Transações 2" width="45%" style="max-width:800px; margin:8px;" />
 </p>
 
 ## ✨ Features
