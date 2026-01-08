@@ -6,6 +6,7 @@ interface AuthState {
   accessToken: string | null;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle: (code: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -27,6 +28,13 @@ export const useAuthStore = create<AuthState>((set) => ({
       console.error('[Auth] Failed to fetch user:', error);
       set({ isLoading: false });
     }
+  },
+
+  loginWithGoogle: async (code: string) => {
+    const response = await api.post('/auth/google', { code });
+    const { accessToken } = response.data.data;
+    localStorage.setItem('accessToken', accessToken);
+    set({ accessToken, isLoading: false });
   },
 
   register: async (email: string, password: string, name?: string) => {
